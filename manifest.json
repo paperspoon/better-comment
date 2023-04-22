@@ -1,24 +1,30 @@
 {
-  "manifest_version": 2,
   "name": "Better Comment",
   "version": "0.1",
   "description": "Analyze and suggest improvements for comments using OpenAI's API",
-
+  "manifest_version": 3,
   "permissions": [
-    "activeTab",
-    "storage",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
     "https://*.github.com/*",
     "https://*.openai.com/*"
   ],
+  "action": {
+    "default_popup": "options.html"
+  },
   "content_scripts": [
     {
-      "matches": ["https://github.com/*"],
-      "js": ["content-script.js"]
+      "matches": [
+        "https://github.com/*"
+      ],
+      "js": [
+        "content-script.js"
+      ]
     }
   ],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
-  "options_page": "options.html"
+    "service_worker": "background.js"
+  }
 }

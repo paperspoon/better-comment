@@ -1,31 +1,29 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === "analyzeComment") {
-    analyzeComment(request.comment, sendResponse);
-    return true; // Required to use sendResponse asynchronously
+  if (request.type === "analyzeComment" && request.options) {
+    analyzeComment(request.comment, request.options).then(sendResponse)
   }
-});
-const analyzeComment = async (comment, sendResponse) => {
-    // Implement the analyzeComment function using the OpenAI API
-    // (same as before, but as a string since it will be injected)
-    const prompt = `이 github 코멘트를 보는 사람의 기분을 좋게 하고 더 도움이 되는 코멘트로 개선해줘: "${comment}"`;
+  return true
+})
+const analyzeComment = async (comment, options) => {
+    const {prompt, api_key, temperature, max_tokens, model} = options;
 
-    const apiKey = "your api key"; // Replace with a secure method of providing the API key
-
-    const response = await fetch("https://api.openai.com/v1/engines/text-davinci-003/completions", {
+    const response = await fetch(`https://api.openai.com/v1/engines/${model}/completions`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${apiKey}`,
+            "Authorization": `Bearer ${api_key}`,
         },
         body: JSON.stringify({
-            prompt: prompt,
-            max_tokens: 1000,
+            prompt: `${prompt}: "${comment}"`,
+            max_tokens: Number(max_tokens),
             n: 1,
             stop: null,
-            temperature: 0.7,
+            temperature: Number(temperature)
         }),
     });
     const data = await response.json();
-    const improvedComment = data.choices[0].text.trim();
-    sendResponse(improvedComment);
+    if (data.error) {
+        return data.error.message;
+    }
+    return data.choices[0].text.trim();
 }

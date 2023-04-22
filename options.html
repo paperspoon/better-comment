@@ -2,11 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <style>
+      body > * {
+        display: block;
+        width: 400px;
+          margin: 0;
+          padding: 4px;
+      }
+      label {
+          margin-top: 8px;
+      }
+    </style>
   </head>
   <body>
     <h1>Better Comment - Settings</h1>
-    <label for="apiKey">OpenAI API Key:</label>
-    <input type="password" id="apiKey" />
+    <label for="api_key">OpenAI API Key:</label>
+    <input type="text" id="api_key" />
     <label for="model">Model</label>
     <select id="model">
       <option>text-davinci-003</option>
@@ -17,11 +28,14 @@
     </select>
     <label for="selector">Prompt</label>
     <input type="text" id="prompt" />
-    <label for="selector">Temperature</label>
+    <label for="max_tokens">Temperature</label>
+    <input type="number" id="max_tokens" />
+    <label for="temperature">Temperature</label>
     <input type="text" id="temperature" />
     <label for="selector">Textarea selector</label>
     <input type="text" id="selector" />
-    <button id="saveBtn">Save</button>
+    <button id="save_button">Save</button>
+    <button id="reset_button">Reset</button>
     <script src="options.js"></script>
   </body>
 </html>
