@@ -5,11 +5,11 @@
     <style>
       body > * {
         display: block;
-        width: 400px;
+        width: 480px;
           margin: 0;
           padding: 4px;
       }
-      label {
+      label, button {
           margin-top: 8px;
       }
     </style>
@@ -18,6 +18,7 @@
     <h1>Better Comment - Settings</h1>
     <label for="api_key">OpenAI API Key:</label>
     <input type="text" id="api_key" />
+    <a href="https://platform.openai.com/keys">Get API Key</a>
     <label for="model">Model</label>
     <select id="model">
       <option>text-davinci-003</option>
@@ -28,7 +29,7 @@
     </select>
     <label for="selector">Prompt</label>
     <input type="text" id="prompt" />
-    <label for="max_tokens">Temperature</label>
+    <label for="max_tokens">Max Tokens</label>
     <input type="number" id="max_tokens" />
     <label for="temperature">Temperature</label>
     <input type="text" id="temperature" />
@@ -36,6 +37,8 @@
     <input type="text" id="selector" />
     <button id="save_button">Save</button>
     <button id="reset_button">Reset</button>
+    <a href="https://github.com/paperspoon/better-comment">https://github.com/paperspoon/better-comment</a>
     <script src="options.js"></script>
+
   </body>
 </html>
