@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Bettoer Comment",
+  "version": "0.1",
+  "description": "Analyze and suggest improvements for comments using OpenAI's API",
+
+  "permissions": [
+    "activeTab",
+    "https://*.github.com/*",
+    "https://*.openai.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content-script.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
