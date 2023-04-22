@@ -4,7 +4,7 @@ const keysWithDefault = [
     ['model', 'text-davinci-003'],
     ['temperature', '0.7'],
     ['max_tokens', '1000'],
-    ['selector', 'textarea[name="comment[body]"]'],
+    ['selector', 'textarea[name="comment[body]"]:focus'],
     ['prompt', '이 github 코멘트를 보는 사람의 기분을 좋게 하고 더 도움이 되는 코멘트로 개선해줘']
 ];
 let lastComment = null;
@@ -14,7 +14,7 @@ chrome.storage.sync.get("options", ({options}) => {
             acc[key] = defaultValue;
             return acc;
         })
-        chrome.storage.sync.set({ options });
+        chrome.storage.sync.set({options});
     }
     const analyzeComment = async (comment) => {
         resultElement.innerHTML = `<marquee>분석중...제발 말 좀 곱게 합시다...</marquee>`;
@@ -39,7 +39,9 @@ chrome.storage.sync.get("options", ({options}) => {
 
     const observeCommentBox = () => {
         const commentBox = document.querySelector(options.selector);
+        console.log(commentBox)
         if (commentBox) {
+            console.log(commentBox)
             resultElement = document.createElement("div");
             commentBox.parentElement.appendChild(resultElement);
             commentBox.addEventListener("blur", onInput);
