@@ -39,9 +39,7 @@ chrome.storage.sync.get("options", ({options}) => {
 
     const observeCommentBox = () => {
         const commentBox = document.querySelector(options.selector);
-        console.log(commentBox)
         if (commentBox) {
-            console.log(commentBox)
             resultElement = document.createElement("div");
             commentBox.parentElement.appendChild(resultElement);
             commentBox.addEventListener("blur", onInput);
