@@ -2,6 +2,7 @@ const resultElement = document.createElement("div");
 chrome.storage.sync.get("options", ({options}) => {
     if (!options) {
         alert("Please set your options in the extension settings. from better comment extension");
+        return
     }
     const analyzeComment = async (comment) => {
         resultElement.innerHTML = `<marquee>분석중...제발 말 좀 곱게 합시다...</marquee>`;
