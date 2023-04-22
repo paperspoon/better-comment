@@ -1,11 +1,12 @@
 {
   "manifest_version": 2,
-  "name": "Bettoer Comment",
+  "name": "Better Comment",
   "version": "0.1",
   "description": "Analyze and suggest improvements for comments using OpenAI's API",
 
   "permissions": [
     "activeTab",
+    "storage",
     "https://*.github.com/*",
     "https://*.openai.com/*"
   ],

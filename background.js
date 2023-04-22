@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 const analyzeComment = async (comment, sendResponse) => {
     // Implement the analyzeComment function using the OpenAI API
     // (same as before, but as a string since it will be injected)
-    const prompt = `코드에 대한 이 github코멘트를 보는 사람의 기분을 좋게 하고 더 도움이 되는 코멘트로 개선해줘: "${comment}"`;
+    const prompt = `이 github 코멘트를 보는 사람의 기분을 좋게 하고 더 도움이 되는 코멘트로 개선해줘: "${comment}"`;
 
     const apiKey = "your api key"; // Replace with a secure method of providing the API key
 
