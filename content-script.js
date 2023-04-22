@@ -5,7 +5,6 @@ chrome.storage.sync.get("options", ({options}) => {
     }
     const analyzeComment = async (comment) => {
         resultElement.innerHTML = `<marquee>분석중...제발 말 좀 곱게 합시다...</marquee>`;
-        console.log(options)
         return new Promise((resolve) => {
             chrome.runtime.sendMessage(
                 {type: "analyzeComment", comment, options},
