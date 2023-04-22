@@ -20,7 +20,7 @@ document.getElementById('save_button').addEventListener('click', () => {
         options[key] = document.getElementById(key).value;
     });
     chrome.storage.sync.set({ options }, () => {
-        alert('저장되었습니다.');
+        alert('저장되었습니다. 새로고침후 이용해주세요.');
     });
 })
 
